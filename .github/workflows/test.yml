@@ -23,3 +23,13 @@ jobs:
         env:
           COMMIT_MESSAGES: ${{ toJson(github.event.commits.*.message) }}
         run: echo "$COMMIT_MESSAGES"
+      - name: check skip
+        run: |
+          SKIP_DEPLOY="false"
+          for MSG in $COMMIT_MESSAGES; do
+            if [[ $MSG == *"#skip"* ]]; then
+              SKIP_DEPLOY="true"
+              break
+            fi
+          done
+          echo "Should deployment be skipped? $SKIP_DEPLOY"
