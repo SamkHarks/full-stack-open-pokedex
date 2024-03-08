@@ -30,3 +30,4 @@ jobs:
           else
             echo "SKIP_DEPLOY=false" >> $GITHUB_ENV
           fi
+          echo "SKIP_DEPLOY: ${{ env.SKIP_DEPLOY }}"
