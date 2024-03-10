@@ -47,7 +47,7 @@ jobs:
           command: npm run test:e2e
           start: npm run start-prod
           wait-on: http://localhost:5000
-      - name: Echo skip deployment status
+      - name: Echo skip_deployment status
         run: |
           echo "Skip deployment  status: ${{ needs.skip_deployment.outputs.skip_deploy }}"
       - name: Trigger deployment
