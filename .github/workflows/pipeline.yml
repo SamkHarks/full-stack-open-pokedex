@@ -49,7 +49,7 @@ jobs:
           wait-on: http://localhost:5000
       - name: Echo skip deployment status
         run: |
-          echo "Skip deployment status: ${{ needs.skip_deployment.outputs.skip_deploy }}"
+          echo "Skip deployment  status: ${{ needs.skip_deployment.outputs.skip_deploy }}"
       - name: Trigger deployment
         if: ${{ github.event_name == 'push' && needs.skip_deployment.outputs.skip_deploy == 'false' }}
         run: curl https://api.render.com/deploy/srv-${{ secrets.RENDER_SERVICE_ID }}?key=${{ secrets.RENDER_API_KEY }}
